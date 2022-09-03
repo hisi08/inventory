@@ -1,0 +1,26 @@
+syntax = "proto3";
+package inventorymanagement;
+
+option go_package = "inventorymanagement/internal/endpoint";
+
+message Message {
+    string body = 1;
+}
+
+message CreateStaffRequest {
+    string email = 1;
+    string name = 2;
+}
+
+message CreateStaffResponse {
+    int32 id = 1;
+    string email = 2;
+    string name = 3;
+
+}
+
+
+service InventoryService {
+    rpc Register (Message) returns (Message) {}
+    rpc CreateStaff (CreateStaffRequest) returns (CreateStaffResponse) {}
+}
