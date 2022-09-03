@@ -1,18 +1,16 @@
 # inventory
 
 1. command to generate protobuf files
-#protoc --go_out=. --go-grpc_out=. inventorymanagement/inventory.proto
+#protoc --go_out=. --go-grpc_out=. ./proto/inventory.proto
+(Note: to run this command need to be in inventory/internal directory eg: /Users/rijanprajapati/Documents/GITHUB/GoProject/inventory/internal)
 
  2. initilizing go mod
 
  #go mod init example.com/go-inventory-grpc
 
-
-
-
  3. generate protobuf
- protoc ./internal/proto/inventory.proto --go_out=./internal/endpoint --go_opt=paths=source_relative --go-grpc_out=./internal/endpoint --go-grpc_opt=paths=source_relative ./internal/proto/inventory.proto
-
+protoc ./internal/proto/inventory.proto --go_out=./internal/endpoint --go_opt=paths=source_relative --go-grpc_out=./internal/endpoint --go-grpc_opt=paths=source_relative ./internal/proto/inventory.proto
+(Note: to run this command need to be in /inventory directory eg: /Users/rijanprajapati/Documents/GITHUB/GoProject/inventory)
 
  4. Now, let’s get the module/ library needed for this project.
 #go get entgo.io/ent/cmd/ent
@@ -26,67 +24,52 @@
 
 #go generate ./ent
 
+7. install protoc 
 
-protoc -I={{.INPUT_PROTOS}}
+# brew install protoc
 
---go_out={{.OUTPUT_DIRECTORY}}
+8. install grpc
 
-mkdir -p {{.OUTPUT_DIRECTORY}}
-...
+# brew install grpc
+9. install go 
 
-generate: golang:
-        summary: Compile and generate protocol buffer golang definitions
-    silent: true
-    vars:
-        INPUT_PROTOS: "((default "." . INPUT PROTOS})•
-        UTPUT _DIRECTORY: "((default "." •OUTPUT _DIRECTORY))
-cmds:
-        - echo Compiling protobufs and generating definitions in Go...
-        - echo - Input directory ((. INPUT_PROTOS))
-        - echo - output directory ((.OUTPUT DIRECTORY))
-        - mkdir - ((.OUTPUT_DIRECTORY))
-            for f in ({. INPUT PROTOS)}/*. proto?
-                echo - generating: $f
-                protoc -I=({. INPUT _PROTOS)) fI
-                    --gO_Out=((.OUTPUT DIRECTORY))
-                    --go_opI-pathsasource_relative\
-                    --g0-grpc_out=((. OUTPUT _DIRECTORY))
-                    --go-grpc_opt=paths=source_relative\
-                    --experimentaL_allow_proto3_optional
-            done
+# brew install hg
+# brew install go
 
-generate: golang:
-        summary: Compile and generate protocol buffer golang definitions
-    silent: true
-    vars:
-        INPUT_PROTOS: "((default "." .inventory/inventorymanagement/internal/proto})•
-        UTPUT _DIRECTORY: "((default "." •inventory/inventorymanagement/internal/endpoint))
-cmds:
-        - echo Compiling protobufs and generating definitions in Go...
-        - echo - Input directory ((.inventory/inventorymanagement/internal/proto))
-        - echo - output directory ((.inventory/inventorymanagement/internal/endpoint))
-        - mkdir - ((.inventory/inventorymanagement/internal/endpoint))
-            for f in ({. inventory/inventorymanagement/internal/proto)}/*. proto?
-                echo - generating: $f
-                protoc -I=./inventory/inventorymanagement/internal/proto/inventory.proto
-                    --gO_Out=./inventory/inventorymanagement/internal/endpoint
-                    --go_opI-pathsasource_relative\
-                    --g0-grpc_out=./inventory/inventorymanagement/internal/endpoint
-                    --go-grpc_opt=paths=source_relative\
-                    --experimentaL_allow_proto3_optional
-            done
+1) Create Directories
 
+mkdir $HOME/Go
+mkdir -p $HOME/Go/src/github.com/user
+2) Setup your paths
 
+export GOPATH=$HOME/Go
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+3) Install Go
 
-protoc ./internal/proto/inventory.proto --go_out=./internal/endpoint --go_opt=paths=source_relative --go-grpc_out=./internal/endpoint --go-grpc_opt=paths=source_relative 
+brew install go
 
-#protoc -I=/Users/hisilamanandhar/Documents/study/inventory/inventorymanagement/internal/proto/inventory.proto --go_out=/Users/hisilamanandhar/Documents/study/inventory/inventorymanagement/internal/endpoint --go-grpc_out=/Users/hisilamanandhar/Documents/study/inventory/inventorymanagement/internal/endpoint /Users/hisilamanandhar/Documents/study/inventory/inventorymanagement/internal/proto/inventory.proto
+4) "go get" the basics
 
-#protoc -I=/Users/hisilamanandhar/Documents/study/inventory/inventorymanagement/internal/proto/inventory.proto --go_out=./endpoint --go-grpc_out=./endpoint /Users/hisilamanandhar/Documents/study/inventory/inventorymanagement/internal/proto/inventory.proto
-
-protoc --go_out=. --go-grpc_out=. inventorymanagement/inventory.proto
+go get golang.org/x/tools/cmd/godoc
 
 
 
 
-protoc -I=/Users/hisilamanandhar/Documents/study/inventory/inventorymanagement/internal/proto/inventory.proto --go_out=/Users/hisilamanandhar/Documents/study/inventory/inventorymanagement/internal/endpoint --go-grpc_out=/Users/hisilamanandhar/Documents/study/inventory/inventorymanagement/internal/endpoint /Users/hisilamanandhar/Documents/study/inventory/inventorymanagement/internal/proto/inventory.proto
+Error ANd steps to resolve it 
+
+protoc-gen-go-grpc: program not found or is not executable
+Please specify a program using absolute path or make sure the program is available in your PATH system variable
+--go-grpc_out: protoc-gen-go-grpc: Plugin failed with status code 1.
+
+to resolve this 
+
+run this command -> go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+
+
+
+
+
+
+
