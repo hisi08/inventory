@@ -67,9 +67,9 @@ to resolve this
 
 run this command -> go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
+another steps to fix this error 
 
-
-
-
-
-
+ export GOPATH=$HOME/go
+ export PATH=$PATH:$GOPATH/bin
+ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
