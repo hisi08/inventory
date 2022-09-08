@@ -68,6 +68,7 @@ to resolve this
 
 run this command -> go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
+another steps to fix this error 
 
 
 
