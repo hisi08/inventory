@@ -10,6 +10,7 @@
 
  3. generate protobuf
 protoc ./internal/proto/inventory.proto --go_out=./internal/endpoint --go_opt=paths=source_relative --go-grpc_out=./internal/endpoint --go-grpc_opt=paths=source_relative ./internal/proto/inventory.proto
+
 (Note: to run this command need to be in /inventory directory eg: /Users/rijanprajapati/Documents/GITHUB/GoProject/inventory)
 
  4. Now, let’s get the module/ library needed for this project.
@@ -73,3 +74,35 @@ run this command -> go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@lat
 
 
 
+#Ent
+RESOURCE: https://entgo.io/docs/getting-started/
+
+
+--Installation--
+go get entgo.io/ent/cmd/ent
+
+--Setup A Go Environment--
+go mod init <project>
+
+--Create Your First Schema--
+go run entgo.io/ent/cmd/ent init User
+
+--Run go generate from the root directory of the project--
+go generate ./ent
+
+--Create Your First Entity--
+create a new ent.Client using db, ie: pg admin, sqllite
+
+--Query Your Entities--
+ent generates a package for each entity schema that contains its
+ predicates, default values, validators and additional information 
+ about storage elements (column names, primary keys, etc).
+
+--Add Your First Edge (Relation)--
+go run entgo.io/ent/cmd/ent init Car Group
+
+
+ export GOPATH=$HOME/go
+  export PATH=$PATH:$GOPATH/bin
+  go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+  go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest

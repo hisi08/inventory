@@ -1,7 +1,7 @@
 package model
 
 type Staff struct {
-	ID    int
+	Id    int
 	Name  string
-	EMAIL string
+	Email string
 }
