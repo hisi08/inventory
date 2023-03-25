@@ -11,13 +11,13 @@ import (
 )
 
 const (
-	address = "localhost:9000"
+	address = "localhost:9090"
 )
 
 func main() {
 	conn, err := grpc.Dial(address, grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {
-		log.Fatalf("didn't connect to port 9000: %v", err)
+		log.Fatalf("didn't connect to port 9090: %v", err)
 	}
 
 	defer conn.Close()
@@ -35,8 +35,8 @@ func main() {
 	log.Println("response :", r)
 
 	createStaff, err := c.CreateStaff(context.Background(), &endpoint.CreateStaffRequest{
-		Name:  "johnCena",
-		Email: "youcantseeme@gmail.com",
+		Name:  "ramhari",
+		Email: "haraii@gmail.com",
 	})
 	if err != nil {
 		log.Fatalf("failed to create staff: %v", err)

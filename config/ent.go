@@ -24,24 +24,18 @@ func SetClient(newClient *ent.Client) {
 }
 
 const (
-	host     = "localhost"
-	port     = 5432
-	user     = "postgres"
-	password = "root"
-	dbname   = "inventory"
+	host1     = "localhost"
+	port1     = 5432
+	user1     = "postgres"
+	password1 = "root"
+	dbname1   = "inventory"
 )
 
 func NewEntClient() (*ent.Client, error) {
 
-	// dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true",
-	// 	os.Getenv("DB_USERNAME"),
-	// 	os.Getenv("DB_PASSWORD"),
-	// 	os.Getenv("DB_HOST"),
-	// 	os.Getenv("DB_PORT"), os.Getenv("DB_DATABASE"))
-
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
 		"password=%s dbname=%s sslmode=disable",
-		host, port, user, password, dbname)
+		host1, port1, user1, password1, dbname1)
 
 	client, err := ent.Open("postgres", psqlInfo, ent.Debug(), ent.Log(func(i ...interface{}) {
 		for _, v := range i {
