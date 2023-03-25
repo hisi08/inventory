@@ -35,8 +35,8 @@ func main() {
 	log.Println("response :", r)
 
 	createStaff, err := c.CreateStaff(context.Background(), &endpoint.CreateStaffRequest{
-		Name:  "ramhari",
-		Email: "haraii@gmail.com",
+		Name:  "sitaram",
+		Email: "sitaram@gmail.com",
 	})
 	if err != nil {
 		log.Fatalf("failed to create staff: %v", err)
