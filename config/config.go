@@ -1,18 +1,8 @@
 package config
 
 import (
-	"fmt"
-
 	"github.com/caarlos0/env/v6"
 	"github.com/pkg/errors"
-)
-
-const (
-	host     = "localhost"
-	port     = 5432
-	user     = "postgres"
-	password = "root"
-	dbname   = "inventory"
 )
 
 type Config struct {
@@ -47,15 +37,4 @@ func Load() (*Config, error) {
 		return &cfg, errors.Wrap(err, "failed to load environment")
 	}
 	return &cfg, nil
-}
-
-func GetPostgresURL() string {
-	// psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
-	// 	"password=%s dbname=%s sslmode=disable",
-	// 	host, port, user, password, dbname)
-
-	psqlURL := fmt.Sprintf("postgres://%s:%s@%s:%d/%s",
-		user, password, host, port, dbname)
-
-	return psqlURL
 }
